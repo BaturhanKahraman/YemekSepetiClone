@@ -14,7 +14,7 @@ namespace YemekSepetiClone.Controllers
         [HttpGet]
         public IActionResult Test()
         {
-            return Ok("Application is working.");
+            return Ok("Application is working. Really working.");
         }
     }
 }

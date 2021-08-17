@@ -21,7 +21,6 @@ namespace YemekSepetiClone.DataAccess.EntityFrameworkCore.Context
 
         public DbSet<User> Users { get; set; }
         public DbSet<Customer> Customers { get; set; }
-        public DbSet<Address> Addresses { get; set; }
         public DbSet<Basket> Baskets { get; set; }
         public DbSet<Meal> Meals { get; set; }
         public DbSet<Category> Categories { get; set; }

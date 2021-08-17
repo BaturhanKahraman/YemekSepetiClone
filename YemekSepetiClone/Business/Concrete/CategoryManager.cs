@@ -21,6 +21,10 @@ namespace YemekSepetiClone.Business.Concrete
 
         public async Task Add(Category category)
         {
+            if (category.Name.StartsWith("iç"))
+            {
+                return;
+            }
             await _dal.Add(category);
         }
 
