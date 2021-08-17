@@ -1,0 +1,30 @@
+﻿[
+  {
+    "id": 1,
+    "name": "İskender",
+    "price": "35.50",
+    "isActive": true,
+    "categoryId": 1
+  },
+  {
+    "id": 2,
+    "name": "Urfa",
+    "price": "38.00",
+    "isActive": true,
+    "categoryId": 1
+  },
+  {
+    "id": 3,
+    "name": "Döner",
+    "price": "25.50",
+    "isActive": true,
+    "categoryId": 1
+  },
+  {
+    "id": 4,
+    "name": "Kutu kola",
+    "price": "5.00",
+    "isActive": true,
+    "categoryId": 2
+  }
+]
