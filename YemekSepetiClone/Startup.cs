@@ -12,9 +12,9 @@ using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using YemekSepetiClone.Business.Abstract;
 using YemekSepetiClone.Business.Concrete;
+using YemekSepetiClone.DataAccess.Abstract.Interfaces;
 using YemekSepetiClone.DataAccess.Concrete.EntityFrameworkCore;
 using YemekSepetiClone.DataAccess.Concrete.EntityFrameworkCore.Context;
-using YemekSepetiClone.DataAccess.EntityFrameworkCore.Abstract.Interfaces;
 
 namespace YemekSepetiClone
 {

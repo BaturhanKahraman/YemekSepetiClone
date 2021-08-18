@@ -1,10 +1,10 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq.Expressions;
-using System;
 using System.Threading.Tasks;
 using YemekSepetiClone.Models;
 
-namespace YemekSepetiClone.DataAccess.EntityFrameworkCore.Abstract.Interfaces
+namespace YemekSepetiClone.DataAccess.Abstract.Interfaces
 {
     public interface ICategoryDal:IEntityRepository<Category>
     {

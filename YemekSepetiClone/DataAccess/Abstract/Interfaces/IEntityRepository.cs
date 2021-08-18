@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
 
-namespace YemekSepetiClone.DataAccess.EntityFrameworkCore.Abstract.Interfaces
+namespace YemekSepetiClone.DataAccess.Abstract.Interfaces
 {
     public interface IEntityRepository<T>
     where T:class,new()

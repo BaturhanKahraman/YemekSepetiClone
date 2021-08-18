@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 using YemekSepetiClone.Business.Abstract;
-using YemekSepetiClone.DataAccess.EntityFrameworkCore.Abstract.Interfaces;
+using YemekSepetiClone.DataAccess.Abstract.Interfaces;
 using YemekSepetiClone.Models;
 
 namespace YemekSepetiClone.Business.Concrete

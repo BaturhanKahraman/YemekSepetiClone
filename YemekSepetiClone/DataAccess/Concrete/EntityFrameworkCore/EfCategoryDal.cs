@@ -4,9 +4,8 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
+using YemekSepetiClone.DataAccess.Abstract.Interfaces;
 using YemekSepetiClone.DataAccess.Concrete.EntityFrameworkCore.Context;
-using YemekSepetiClone.DataAccess.EntityFrameworkCore.Abstract;
-using YemekSepetiClone.DataAccess.EntityFrameworkCore.Abstract.Interfaces;
 using YemekSepetiClone.Models;
 
 namespace YemekSepetiClone.DataAccess.Concrete.EntityFrameworkCore

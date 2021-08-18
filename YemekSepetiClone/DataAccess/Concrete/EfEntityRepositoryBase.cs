@@ -4,9 +4,9 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
-using YemekSepetiClone.DataAccess.EntityFrameworkCore.Abstract.Interfaces;
+using YemekSepetiClone.DataAccess.Abstract.Interfaces;
 
-namespace YemekSepetiClone.DataAccess.EntityFrameworkCore.Abstract
+namespace YemekSepetiClone.DataAccess.Concrete
 {
     public class EfEntityRepositoryBase<T>:IEntityRepository<T>
     where T : class, new()

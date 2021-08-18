@@ -1,6 +1,6 @@
 ﻿using YemekSepetiClone.Models.User;
 
-namespace YemekSepetiClone.DataAccess.EntityFrameworkCore.Abstract.Interfaces
+namespace YemekSepetiClone.DataAccess.Abstract.Interfaces
 {
     public interface IShopDal : IEntityRepository<Shop>
     {
