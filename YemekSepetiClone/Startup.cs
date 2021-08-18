@@ -12,9 +12,9 @@ using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using YemekSepetiClone.Business.Abstract;
 using YemekSepetiClone.Business.Concrete;
+using YemekSepetiClone.DataAccess.Concrete.EntityFrameworkCore;
+using YemekSepetiClone.DataAccess.Concrete.EntityFrameworkCore.Context;
 using YemekSepetiClone.DataAccess.EntityFrameworkCore.Abstract.Interfaces;
-using YemekSepetiClone.DataAccess.EntityFrameworkCore.Concrete;
-using YemekSepetiClone.DataAccess.EntityFrameworkCore.Context;
 
 namespace YemekSepetiClone
 {
@@ -36,7 +36,7 @@ namespace YemekSepetiClone
             //services.AddDbContextFactory<YemekSepetiContext>(
                 //options =>
                  //   options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
-            services.AddScoped<ICategoryDal,CategoryDal> ();
+            services.AddScoped<ICategoryDal,EfCategoryDal> ();
             services.AddScoped<ICategoryService, CategoryManager>();
         }
 

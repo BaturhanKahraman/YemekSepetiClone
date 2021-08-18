@@ -15,7 +15,6 @@
 
   <ItemGroup>
     <Folder Include="Business\Concrete\" />
-    <Folder Include="DataAccess\EntityFrameworkCore\Concrete\" />
     <Folder Include="Models\Dtos\Category\" />
   </ItemGroup>
 

@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using YemekSepetiClone.DataAccess.EntityFrameworkCore.Context;
+using YemekSepetiClone.DataAccess.Concrete.EntityFrameworkCore.Context;
 
 namespace YemekSepetiClone.Migrations
 {

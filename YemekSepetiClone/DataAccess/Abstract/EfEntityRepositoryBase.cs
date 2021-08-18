@@ -8,11 +8,11 @@ using YemekSepetiClone.DataAccess.EntityFrameworkCore.Abstract.Interfaces;
 
 namespace YemekSepetiClone.DataAccess.EntityFrameworkCore.Abstract
 {
-    public class EntityRepositoryBase<T>:IEntityRepository<T>
+    public class EfEntityRepositoryBase<T>:IEntityRepository<T>
     where T : class, new()
     {
         private readonly DbContext _context;
-        public EntityRepositoryBase(DbContext context)
+        public EfEntityRepositoryBase(DbContext context)
         {
             _context = context;
         }

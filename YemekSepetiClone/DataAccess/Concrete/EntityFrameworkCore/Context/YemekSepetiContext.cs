@@ -1,9 +1,8 @@
-﻿using System.Collections.Generic;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using YemekSepetiClone.Models;
 using YemekSepetiClone.Models.User;
 
-namespace YemekSepetiClone.DataAccess.EntityFrameworkCore.Context
+namespace YemekSepetiClone.DataAccess.Concrete.EntityFrameworkCore.Context
 {
     public class YemekSepetiContext : DbContext
     {

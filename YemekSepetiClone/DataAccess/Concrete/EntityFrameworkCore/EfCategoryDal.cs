@@ -3,20 +3,19 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc.Filters;
 using Microsoft.EntityFrameworkCore;
+using YemekSepetiClone.DataAccess.Concrete.EntityFrameworkCore.Context;
 using YemekSepetiClone.DataAccess.EntityFrameworkCore.Abstract;
 using YemekSepetiClone.DataAccess.EntityFrameworkCore.Abstract.Interfaces;
-using YemekSepetiClone.DataAccess.EntityFrameworkCore.Context;
 using YemekSepetiClone.Models;
 
-namespace YemekSepetiClone.DataAccess.EntityFrameworkCore.Concrete
+namespace YemekSepetiClone.DataAccess.Concrete.EntityFrameworkCore
 {
-    public class CategoryDal : EntityRepositoryBase<Category>, ICategoryDal
+    public class EfCategoryDal : EfEntityRepositoryBase<Category>, ICategoryDal
     {
         private readonly YemekSepetiContext _context;
 
-        public CategoryDal(YemekSepetiContext context) : base(context)
+        public EfCategoryDal(YemekSepetiContext context) : base(context)
         {
             _context = context;
         }

@@ -35,5 +35,12 @@ namespace YemekSepetiClone.Controllers
             IList<Category> categories = await _service.GetListWithMeals();
             return Ok(categories);
         }
+
+        [HttpPost]
+        public async Task<IActionResult> Update(Category category)
+        {
+            IList<Category> categories = await _service.GetListWithMeals();
+            return Ok(categories);
+        }
     }
 }
