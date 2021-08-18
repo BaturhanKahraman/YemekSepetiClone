@@ -14,7 +14,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Business\Concrete\" />
     <Folder Include="Models\Dtos\Category\" />
   </ItemGroup>
 

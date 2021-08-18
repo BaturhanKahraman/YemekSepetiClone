@@ -21,11 +21,7 @@ namespace YemekSepetiClone.Business.Concrete
 
         public async Task Add(Category category)
         {
-            if (category.Name.StartsWith("iç"))
-            {
-                return;
-            }
-            await _dal.Add(category);
+           await _dal.Add(category);
         }
 
         public async Task<IList<Category>> GetList()
@@ -36,6 +32,11 @@ namespace YemekSepetiClone.Business.Concrete
         public async Task<IList<Category>> GetListWithMeals()
         {
             return await _dal.GetListWithMeals();
+        }
+
+        public async Task Update(Category category)
+        {
+            await _dal.Update(category);
         }
     }
 }

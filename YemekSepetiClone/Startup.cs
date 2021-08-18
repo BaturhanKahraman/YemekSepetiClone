@@ -38,6 +38,9 @@ namespace YemekSepetiClone
                  //   options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
             services.AddScoped<ICategoryDal,EfCategoryDal> ();
             services.AddScoped<ICategoryService, CategoryManager>();
+
+            services.AddScoped<IMealDal,EfMealDal>();
+            services.AddScoped<IMealService,MealManager>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
