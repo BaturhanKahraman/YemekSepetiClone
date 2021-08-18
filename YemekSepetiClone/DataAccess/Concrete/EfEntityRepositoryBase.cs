@@ -16,6 +16,7 @@ namespace YemekSepetiClone.DataAccess.Concrete
         {
             _context = context;
         }
+
         public async Task Add(T entity)
         {
             var entry = _context.Entry(entity);

@@ -53,7 +53,7 @@ namespace YemekSepetiClone
 
             ctx.Database.Migrate();
             app.UseRouting();
-
+            app.UseStaticFiles();
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>

@@ -12,6 +12,6 @@ namespace YemekSepetiClone.Models
         public bool IsActive { get; set; }
         public string ImagePath { get; set; }
         public int CategoryId { get; set; }
-        public Category Category { get; set; } = new();
+        public Category Category { get; set; }
     }
 }

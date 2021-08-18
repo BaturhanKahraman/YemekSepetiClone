@@ -11,6 +11,7 @@ namespace YemekSepetiClone.Models
         [Column(TypeName = "decimal(18,2)")]
         public decimal TotalPrice { get; set; }
 
+        public User.User User { get; set; }
         public List<BasketItem> BasketItems { get; set; } = new();
     }
 }

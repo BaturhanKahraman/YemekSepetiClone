@@ -8,6 +8,6 @@ namespace YemekSepetiClone.Models
 
         public string Name { get; set; }
 
-        public List<Meal> Meals { get; set; } = new();
+        public List<Meal> Meals { get; set; }
     }
 }
