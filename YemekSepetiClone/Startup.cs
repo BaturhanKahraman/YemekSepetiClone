@@ -15,6 +15,7 @@ using YemekSepetiClone.Business.Concrete;
 using YemekSepetiClone.DataAccess.Abstract.Interfaces;
 using YemekSepetiClone.DataAccess.Concrete.EntityFrameworkCore;
 using YemekSepetiClone.DataAccess.Concrete.EntityFrameworkCore.Context;
+using Microsoft.OpenApi.Models;
 
 namespace YemekSepetiClone
 {
@@ -30,8 +31,13 @@ namespace YemekSepetiClone
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            
 
             services.AddControllers();
+            services.AddSwaggerGen(c =>
+            {
+                c.SwaggerDoc("v1",new OpenApiInfo { Title = "My API V1",Version = "v1" });
+            });
             services.AddDbContext<YemekSepetiContext>(options=>options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
             //services.AddDbContextFactory<YemekSepetiContext>(
                 //options =>
@@ -41,6 +47,7 @@ namespace YemekSepetiClone
 
             services.AddScoped<IMealDal,EfMealDal>();
             services.AddScoped<IMealService,MealManager>();
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -50,7 +57,12 @@ namespace YemekSepetiClone
             {
                 app.UseDeveloperExceptionPage();
             }
-
+            app.UseSwagger();
+            app.UseSwaggerUI(c =>
+            {
+                c.SwaggerEndpoint("/swagger/v1/swagger.json","My API V1");
+                c.RoutePrefix = string.Empty;
+            });
             ctx.Database.Migrate();
             app.UseRouting();
             app.UseStaticFiles();
