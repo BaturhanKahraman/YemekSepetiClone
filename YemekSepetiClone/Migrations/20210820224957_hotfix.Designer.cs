@@ -10,8 +10,8 @@ using YemekSepetiClone.DataAccess.Concrete.EntityFrameworkCore.Context;
 namespace YemekSepetiClone.Migrations
 {
     [DbContext(typeof(YemekSepetiContext))]
-    [Migration("20210820221228_HotFix")]
-    partial class HotFix
+    [Migration("20210820224957_hotfix")]
+    partial class hotfix
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -79,7 +79,7 @@ namespace YemekSepetiClone.Migrations
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("ShopId")
+                    b.Property<int?>("ShopId")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
@@ -253,9 +253,7 @@ namespace YemekSepetiClone.Migrations
                 {
                     b.HasOne("YemekSepetiClone.Models.User.Shop", "Shop")
                         .WithMany("Categories")
-                        .HasForeignKey("ShopId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("ShopId");
 
                     b.Navigation("Shop");
                 });

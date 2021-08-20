@@ -9,7 +9,8 @@ namespace YemekSepetiClone.Models
 
         public string Name { get; set; }
 
-        public int ShopId { get; set; }
+
+        public int? ShopId { get; set; }
 
         public Shop Shop { get; set; }
 

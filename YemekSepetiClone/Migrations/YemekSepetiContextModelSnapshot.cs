@@ -77,7 +77,7 @@ namespace YemekSepetiClone.Migrations
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("ShopId")
+                    b.Property<int?>("ShopId")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
@@ -251,9 +251,7 @@ namespace YemekSepetiClone.Migrations
                 {
                     b.HasOne("YemekSepetiClone.Models.User.Shop", "Shop")
                         .WithMany("Categories")
-                        .HasForeignKey("ShopId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("ShopId");
 
                     b.Navigation("Shop");
                 });
