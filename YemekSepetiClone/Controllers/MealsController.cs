@@ -6,6 +6,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using YemekSepetiClone.Business.Abstract;
 using YemekSepetiClone.Models;
+using YemekSepetiClone.Models.Dtos.Meal;
 
 namespace YemekSepetiClone.Controllers
 {
@@ -24,8 +25,23 @@ namespace YemekSepetiClone.Controllers
             var mealList= await _service.GetList();
             return Ok(mealList);
         }
+
+        [HttpGet]
+        public async Task<IActionResult> GetDetail(int id)
+        {
+            var result = await _service.GetById(id);
+            return Ok(result);
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> GetMealsByShop(int id)
+        {
+            var result = await _service.GetMealsByShopId(id);
+            return Ok(result);
+        }
+
         [HttpPost]
-        public async Task<IActionResult> Add(Meal meal)
+        public async Task<IActionResult> Add(MealAddDto meal)
         {
             await _service.Add(meal);
             return Ok();

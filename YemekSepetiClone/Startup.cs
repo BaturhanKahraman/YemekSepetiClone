@@ -31,19 +31,20 @@ namespace YemekSepetiClone
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            
+
 
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1",new OpenApiInfo { Title = "My API V1",Version = "v1" });
             });
-            services.AddDbContext<YemekSepetiContext>(options=>options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+            services.AddDbContext<YemekSepetiContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
             //services.AddDbContextFactory<YemekSepetiContext>(
-                //options =>
-                 //   options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
-            services.AddScoped<ICategoryDal,EfCategoryDal> ();
-            services.AddScoped<ICategoryService, CategoryManager>();
+            //options =>
+            //   options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+            #region ScopedServices
+            services.AddScoped<ICategoryDal,EfCategoryDal>();
+            services.AddScoped<ICategoryService,CategoryManager>();
 
             services.AddScoped<IMealDal,EfMealDal>();
             services.AddScoped<IMealService,MealManager>();
@@ -51,6 +52,15 @@ namespace YemekSepetiClone
             services.AddScoped<IOrderDal,EfOrderDal>();
             services.AddScoped<IOrderService,OrderManager>();
 
+            services.AddScoped<ICustomerDal,EfCustomerDal>();
+            services.AddScoped<ICustomerService,CustomerManager>();
+
+            services.AddScoped<IShopDal,EfShopDal>();
+            services.AddScoped<IShopService,ShopManager>();
+
+            services.AddScoped<IAuthService,AuthManager>();
+
+            #endregion
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

@@ -3,6 +3,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using YemekSepetiClone.Business.Abstract;
 using YemekSepetiClone.Models;
+using YemekSepetiClone.Models.Dtos.Category;
 
 namespace YemekSepetiClone.Controllers
 {
@@ -17,7 +18,7 @@ namespace YemekSepetiClone.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Add(Category category)
+        public async Task<IActionResult> Add(CategoryAddDto category)
         {
             await _service.Add(category);
             return Ok();

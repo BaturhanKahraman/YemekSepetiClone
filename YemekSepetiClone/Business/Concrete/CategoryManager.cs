@@ -3,6 +3,7 @@ using System.Threading.Tasks;
 using YemekSepetiClone.Business.Abstract;
 using YemekSepetiClone.DataAccess.Abstract.Interfaces;
 using YemekSepetiClone.Models;
+using YemekSepetiClone.Models.Dtos.Category;
 
 namespace YemekSepetiClone.Business.Concrete
 {
@@ -19,8 +20,13 @@ namespace YemekSepetiClone.Business.Concrete
             return await _dal.IsTableEmpty();
         }
 
-        public async Task Add(Category category)
+        public async Task Add(CategoryAddDto categoryDto)
         {
+            Category category = new()
+            {
+                Name = categoryDto.Name,
+                ShopId = categoryDto.ShopId
+            };
            await _dal.Add(category);
         }
 
