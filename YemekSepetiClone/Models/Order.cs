@@ -11,7 +11,7 @@ namespace YemekSepetiClone.Models
         public string Note { get; set; }
         public string Address { get; set; }
 
-        public Basket Basket { get; set; } = new();
+        public Basket Basket { get; set; } 
         public DateTime OrderedAt { get; set; } = DateTime.Now;
         public DeliveryMethod DeliveryMethod { get; set; } = DeliveryMethod.WithCourier;
     }

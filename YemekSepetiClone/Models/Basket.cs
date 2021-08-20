@@ -12,6 +12,6 @@ namespace YemekSepetiClone.Models
         public decimal TotalPrice { get; set; }
 
         public User.User User { get; set; }
-        public List<BasketItem> BasketItems { get; set; } = new();
+        public List<BasketItem> BasketItems { get; set; }
     }
 }

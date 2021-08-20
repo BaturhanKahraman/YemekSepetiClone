@@ -48,6 +48,9 @@ namespace YemekSepetiClone
             services.AddScoped<IMealDal,EfMealDal>();
             services.AddScoped<IMealService,MealManager>();
 
+            services.AddScoped<IOrderDal,EfOrderDal>();
+            services.AddScoped<IOrderService,OrderManager>();
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
