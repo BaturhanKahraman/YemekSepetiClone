@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System.Collections.Generic;
+using System.Threading.Tasks;
 using YemekSepetiClone.Business.Abstract;
 using YemekSepetiClone.DataAccess.Abstract.Interfaces;
 using YemekSepetiClone.Models.User;
@@ -27,6 +28,11 @@ namespace YemekSepetiClone.Business.Concrete
         public async Task AddShop(Shop shop)
         {
             await _shopDal.Add(shop);
+        }
+
+        public async Task<IList<Shop>> GetList()
+        {
+            return await _shopDal.GetList();
         }
     }
 }

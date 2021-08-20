@@ -8,7 +8,7 @@ using YemekSepetiClone.Business.Abstract;
 
 namespace YemekSepetiClone.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/[controller]/[action]")]
     [ApiController]
     public class ShopController : ControllerBase
     {
@@ -23,6 +23,11 @@ namespace YemekSepetiClone.Controllers
         public async Task<IActionResult> GetDetail(int id)
         {
             return Ok( await _shopService.GetShopById(id));
+        }
+        [HttpGet]
+        public async Task<IActionResult> GetShopList()
+        {
+            return Ok(await _shopService.GetList());
         }
     }
 }

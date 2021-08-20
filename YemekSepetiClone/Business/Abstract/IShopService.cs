@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System.Collections.Generic;
+using System.Threading.Tasks;
 using YemekSepetiClone.Models.User;
 
 namespace YemekSepetiClone.Business.Abstract
@@ -10,5 +11,6 @@ namespace YemekSepetiClone.Business.Abstract
         Task<Shop> GetShopByEmailPassword(string email, string password);
 
         Task AddShop(Shop shop);
+        Task<IList<Shop>> GetList();
     }
 }
