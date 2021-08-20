@@ -8,7 +8,5 @@ namespace YemekSepetiClone.Models.User
         public string FirstName { get; set; }
         public string Lastname { get; set; }
         public List<Order> GivenOrders { get; set; } = new();
-        public int BasketId { get; set; }
-        public Basket Basket { get; set; }
     }
 }
