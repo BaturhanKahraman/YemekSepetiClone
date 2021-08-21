@@ -36,7 +36,7 @@ namespace YemekSepetiClone.Business.Concrete
             {
                 Address = shopDto.Address, Email = shopDto.Email, Password = shopDto.Password, Phone = shopDto.Phone,
                 MinPrice = shopDto.MinPrice, Name = shopDto.Name, ServiceQuality = shopDto.ServiceQuality,
-                ServiceTime = shopDto.ServiceTime, Speed = shopDto.Speed, TasteQuality = shopDto.TasteQuality
+                ServiceTime = shopDto.ServiceTime, Speed = shopDto.Speed, TasteQuality = shopDto.TasteQuality,ImagePath = shopDto.ImagePath
             };
             await _shopService.AddShop(shop);
         }

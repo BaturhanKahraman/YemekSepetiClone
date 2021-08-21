@@ -16,6 +16,7 @@ using YemekSepetiClone.DataAccess.Abstract.Interfaces;
 using YemekSepetiClone.DataAccess.Concrete.EntityFrameworkCore;
 using YemekSepetiClone.DataAccess.Concrete.EntityFrameworkCore.Context;
 using Microsoft.OpenApi.Models;
+using Newtonsoft.Json;
 
 namespace YemekSepetiClone
 {
@@ -33,7 +34,8 @@ namespace YemekSepetiClone
         {
 
 
-            services.AddControllers();
+            services.AddControllers().AddNewtonsoftJson(options =>
+                options.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore);
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1",new OpenApiInfo { Title = "My API V1",Version = "v1" });

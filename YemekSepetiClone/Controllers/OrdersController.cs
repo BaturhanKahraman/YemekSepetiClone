@@ -19,11 +19,5 @@ namespace YemekSepetiClone.Controllers
         {
             this.orderService = orderService;
         }
-
-        [HttpPost]
-        public async Task<IActionResult> Add(Order order)
-        {
-            return Ok();
-        }
     }
 }
