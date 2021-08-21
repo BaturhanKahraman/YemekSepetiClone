@@ -33,6 +33,7 @@ namespace YemekSepetiClone
         public void ConfigureServices(IServiceCollection services)
         {
 
+            services.AddCors();
 
             services.AddControllers().AddNewtonsoftJson(options =>
                 options.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore);
@@ -72,6 +73,9 @@ namespace YemekSepetiClone
             {
                 app.UseDeveloperExceptionPage();
             }
+            app.UseCors(
+                options => options.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader()
+            );
             app.UseSwagger();
             app.UseSwaggerUI(c =>
             {
