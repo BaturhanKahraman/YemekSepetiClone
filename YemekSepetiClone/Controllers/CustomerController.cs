@@ -12,17 +12,17 @@ namespace YemekSepetiClone.Controllers
     [ApiController]
     public class CustomerController : ControllerBase
     {
-        private readonly IShopService _shopService;
+        private readonly ICustomerService _customer;
 
-        public CustomerController(IShopService shopService)
+        public CustomerController(ICustomerService customerService)
         {
-            _shopService = shopService;
+            _customer = customerService;
         }
 
         [HttpGet]
         public async Task<IActionResult> GetById(int id)
         {
-            var result = await _shopService.GetShopById(id);
+            var result = await _customer.GetCustomerById(id);
             if (result != null)
             {
                 return Ok(result);
