@@ -74,7 +74,7 @@ namespace YemekSepetiClone
                 app.UseDeveloperExceptionPage();
             }
             app.UseCors(
-                options => options.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader()
+                options => options.AllowAnyHeader().AllowAnyMethod().AllowAnyOrigin()
             );
             app.UseSwagger();
             app.UseSwaggerUI(c =>
