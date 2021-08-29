@@ -6,6 +6,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using YemekSepetiClone.Business.Abstract;
 using YemekSepetiClone.Models;
+using YemekSepetiClone.Models.Dtos.Order;
 
 namespace YemekSepetiClone.Controllers
 {
@@ -13,11 +14,26 @@ namespace YemekSepetiClone.Controllers
     [ApiController]
     public class OrdersController : ControllerBase
     {
-        private readonly IOrderService orderService;
+        private readonly IOrderService _orderService;
 
         public OrdersController(IOrderService orderService)
         {
-            this.orderService = orderService;
+            _orderService = orderService;
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Add(OrderDto dto)
+        {
+            try
+            {
+                await _orderService.Add(dto);
+            }
+            catch (Exception e)
+            {
+                return BadRequest(e.Message);
+            }
+
+            return Ok();
         }
     }
 }

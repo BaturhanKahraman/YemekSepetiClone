@@ -10,8 +10,8 @@ using YemekSepetiClone.DataAccess.Concrete.EntityFrameworkCore.Context;
 namespace YemekSepetiClone.Migrations
 {
     [DbContext(typeof(YemekSepetiContext))]
-    [Migration("20210817180449_AddressRefactor")]
-    partial class AddressRefactor
+    [Migration("20210829014639_InitialCreate")]
+    partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -28,10 +28,15 @@ namespace YemekSepetiClone.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<int>("CustomerId")
+                        .HasColumnType("int");
+
                     b.Property<decimal>("TotalPrice")
                         .HasColumnType("decimal(18,2)");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("CustomerId");
 
                     b.ToTable("Baskets");
                 });
@@ -46,7 +51,7 @@ namespace YemekSepetiClone.Migrations
                     b.Property<int?>("BasketId")
                         .HasColumnType("int");
 
-                    b.Property<int?>("MealId")
+                    b.Property<int>("MealId")
                         .HasColumnType("int");
 
                     b.Property<decimal>("Price")
@@ -93,6 +98,9 @@ namespace YemekSepetiClone.Migrations
 
                     b.Property<int>("CategoryId")
                         .HasColumnType("int");
+
+                    b.Property<double>("DiscountPercentage")
+                        .HasColumnType("float");
 
                     b.Property<string>("Explanation")
                         .HasColumnType("nvarchar(max)");
@@ -196,16 +204,39 @@ namespace YemekSepetiClone.Migrations
                 {
                     b.HasBaseType("YemekSepetiClone.Models.User.User");
 
-                    b.Property<string>("Explanation")
+                    b.Property<string>("ImagePath")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("ImagePath")
+                    b.Property<string>("MinPrice")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<double>("ServiceQuality")
+                        .HasColumnType("float");
+
+                    b.Property<string>("ServiceTime")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<double>("Speed")
+                        .HasColumnType("float");
+
+                    b.Property<double>("TasteQuality")
+                        .HasColumnType("float");
+
                     b.ToTable("Shops");
+                });
+
+            modelBuilder.Entity("YemekSepetiClone.Models.Basket", b =>
+                {
+                    b.HasOne("YemekSepetiClone.Models.User.Customer", "Customer")
+                        .WithMany()
+                        .HasForeignKey("CustomerId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Customer");
                 });
 
             modelBuilder.Entity("YemekSepetiClone.Models.BasketItem", b =>
@@ -216,16 +247,20 @@ namespace YemekSepetiClone.Migrations
 
                     b.HasOne("YemekSepetiClone.Models.Meal", "Meal")
                         .WithMany()
-                        .HasForeignKey("MealId");
+                        .HasForeignKey("MealId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("Meal");
                 });
 
             modelBuilder.Entity("YemekSepetiClone.Models.Category", b =>
                 {
-                    b.HasOne("YemekSepetiClone.Models.User.Shop", null)
+                    b.HasOne("YemekSepetiClone.Models.User.Shop", "Shop")
                         .WithMany("Categories")
                         .HasForeignKey("ShopId");
+
+                    b.Navigation("Shop");
                 });
 
             modelBuilder.Entity("YemekSepetiClone.Models.Meal", b =>

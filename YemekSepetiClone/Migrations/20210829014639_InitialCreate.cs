@@ -8,36 +8,6 @@ namespace YemekSepetiClone.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "Addresses",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    PostalCode = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    City = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Country = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    LongAddress = table.Column<string>(type: "nvarchar(max)", nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Addresses", x => x.Id);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Baskets",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    TotalPrice = table.Column<decimal>(type: "decimal(18,2)", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Baskets", x => x.Id);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "Users",
                 columns: table => new
                 {
@@ -45,18 +15,12 @@ namespace YemekSepetiClone.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Email = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Password = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    AddressId = table.Column<int>(type: "int", nullable: true),
+                    Address = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Phone = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Users", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_Users_Addresses_AddressId",
-                        column: x => x.AddressId,
-                        principalTable: "Addresses",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
@@ -84,7 +48,12 @@ namespace YemekSepetiClone.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false),
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Explanation = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                    Speed = table.Column<double>(type: "float", nullable: false),
+                    ServiceQuality = table.Column<double>(type: "float", nullable: false),
+                    TasteQuality = table.Column<double>(type: "float", nullable: false),
+                    ImagePath = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    MinPrice = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    ServiceTime = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -95,6 +64,26 @@ namespace YemekSepetiClone.Migrations
                         principalTable: "Users",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Baskets",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    TotalPrice = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
+                    CustomerId = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Baskets", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Baskets_Customers_CustomerId",
+                        column: x => x.CustomerId,
+                        principalTable: "Customers",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -161,9 +150,11 @@ namespace YemekSepetiClone.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    DiscountPercentage = table.Column<double>(type: "float", nullable: false),
                     Price = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
                     Explanation = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     IsActive = table.Column<bool>(type: "bit", nullable: false),
+                    ImagePath = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     CategoryId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
@@ -183,7 +174,7 @@ namespace YemekSepetiClone.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    MealId = table.Column<int>(type: "int", nullable: true),
+                    MealId = table.Column<int>(type: "int", nullable: false),
                     Quantity = table.Column<int>(type: "int", nullable: false),
                     Price = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
                     BasketId = table.Column<int>(type: "int", nullable: true)
@@ -202,7 +193,7 @@ namespace YemekSepetiClone.Migrations
                         column: x => x.MealId,
                         principalTable: "Meals",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateIndex(
@@ -214,6 +205,11 @@ namespace YemekSepetiClone.Migrations
                 name: "IX_BasketItem_MealId",
                 table: "BasketItem",
                 column: "MealId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Baskets_CustomerId",
+                table: "Baskets",
+                column: "CustomerId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Categories_ShopId",
@@ -239,11 +235,6 @@ namespace YemekSepetiClone.Migrations
                 name: "IX_Orders_ShopId",
                 table: "Orders",
                 column: "ShopId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Users_AddressId",
-                table: "Users",
-                column: "AddressId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -261,19 +252,16 @@ namespace YemekSepetiClone.Migrations
                 name: "Baskets");
 
             migrationBuilder.DropTable(
-                name: "Customers");
+                name: "Categories");
 
             migrationBuilder.DropTable(
-                name: "Categories");
+                name: "Customers");
 
             migrationBuilder.DropTable(
                 name: "Shops");
 
             migrationBuilder.DropTable(
                 name: "Users");
-
-            migrationBuilder.DropTable(
-                name: "Addresses");
         }
     }
 }

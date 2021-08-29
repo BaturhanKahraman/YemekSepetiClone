@@ -26,15 +26,15 @@ namespace YemekSepetiClone.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<int>("CustomerId")
+                        .HasColumnType("int");
+
                     b.Property<decimal>("TotalPrice")
                         .HasColumnType("decimal(18,2)");
 
-                    b.Property<int?>("UserId")
-                        .HasColumnType("int");
-
                     b.HasKey("Id");
 
-                    b.HasIndex("UserId");
+                    b.HasIndex("CustomerId");
 
                     b.ToTable("Baskets");
                 });
@@ -96,6 +96,9 @@ namespace YemekSepetiClone.Migrations
 
                     b.Property<int>("CategoryId")
                         .HasColumnType("int");
+
+                    b.Property<double>("DiscountPercentage")
+                        .HasColumnType("float");
 
                     b.Property<string>("Explanation")
                         .HasColumnType("nvarchar(max)");
@@ -225,11 +228,13 @@ namespace YemekSepetiClone.Migrations
 
             modelBuilder.Entity("YemekSepetiClone.Models.Basket", b =>
                 {
-                    b.HasOne("YemekSepetiClone.Models.User.User", "User")
+                    b.HasOne("YemekSepetiClone.Models.User.Customer", "Customer")
                         .WithMany()
-                        .HasForeignKey("UserId");
+                        .HasForeignKey("CustomerId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
-                    b.Navigation("User");
+                    b.Navigation("Customer");
                 });
 
             modelBuilder.Entity("YemekSepetiClone.Models.BasketItem", b =>

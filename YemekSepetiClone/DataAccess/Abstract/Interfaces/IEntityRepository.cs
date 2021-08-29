@@ -9,9 +9,9 @@ namespace YemekSepetiClone.DataAccess.Abstract.Interfaces
     where T:class,new()
     {
         Task Add(T entity);
-        Task Delete(T entity);
-        Task Update(T entity);
-        Task<T> Get(Expression<Func<T,bool>> filter);
+        Task DeleteAsync(T entity);
+        Task UpdateAsync(T entity);
+        Task<T> GetAsync(Expression<Func<T,bool>> filter);
         Task<IList<T>> GetList(Expression<Func<T,bool>> filter =null);
     }
 }

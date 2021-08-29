@@ -61,7 +61,14 @@ namespace YemekSepetiClone
             services.AddScoped<IShopDal,EfShopDal>();
             services.AddScoped<IShopService,ShopManager>();
 
+            services.AddScoped<IBasketDal,EfBasketDal>();
+            services.AddScoped<IBasketService,BasketManager>();
+
+            services.AddScoped<IBasketItemDal,EfBasketItemDal>();
+            services.AddScoped<IBasketItemService,BasketItemManager>(); 
+
             services.AddScoped<IAuthService,AuthManager>();
+
 
             #endregion
         }

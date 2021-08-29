@@ -13,7 +13,7 @@ namespace YemekSepetiClone.Business.Abstract
         Task Add(MealAddDto meal);
         Task Update(Meal meal);
         Task<IList<Meal>> GetList();
-        Task<Meal> GetById(int id);
+        Task<Meal> GetByIdAsync(int id);
         Task Delete(Meal meal);
         Task<List<Meal>> GetMealsByShopId(int id);
     }

@@ -1,6 +1,7 @@
-﻿using Microsoft.EntityFrameworkCore.Metadata.Internal;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Linq;
+using YemekSepetiClone.Models.User;
 
 namespace YemekSepetiClone.Models
 {
@@ -10,8 +11,8 @@ namespace YemekSepetiClone.Models
 
         [Column(TypeName = "decimal(18,2)")]
         public decimal TotalPrice { get; set; }
-
-        public User.User User { get; set; }
-        public List<BasketItem> BasketItems { get; set; }
+        public int CustomerId { get; set; }
+        public Customer Customer { get; set; }
+        public List<BasketItem> BasketItems { get; set; } 
     }
 }

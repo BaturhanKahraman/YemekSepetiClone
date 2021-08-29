@@ -24,21 +24,21 @@ namespace YemekSepetiClone.DataAccess.Concrete
             await _context.SaveChangesAsync();
         }
 
-        public async Task Delete(T entity)
+        public async Task DeleteAsync(T entity)
         {
             var entry = _context.Entry(entity);
             entry.State = EntityState.Deleted;
             await _context.SaveChangesAsync();
         }
 
-        public async Task Update(T entity)
+        public async Task UpdateAsync(T entity)
         {
             var entry = _context.Entry(entity);
             entry.State = EntityState.Modified;
             await _context.SaveChangesAsync();
         }
 
-        public async Task<T> Get(Expression<Func<T, bool>> filter)
+        public async Task<T> GetAsync(Expression<Func<T, bool>> filter)
         {
             return await _context.Set<T>().FirstOrDefaultAsync(filter);
         }

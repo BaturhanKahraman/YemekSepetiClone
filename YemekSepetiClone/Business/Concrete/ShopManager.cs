@@ -17,12 +17,12 @@ namespace YemekSepetiClone.Business.Concrete
 
         public async Task<Shop> GetShopById(int id)
         {
-            return await _shopDal.Get(x => x.Id == id);
+            return await _shopDal.GetAsync(x => x.Id == id);
         }
 
         public async Task<Shop> GetShopByEmailPassword(string email, string password)
         {
-            return await _shopDal.Get(x => x.Email == email&&x.Password==password);
+            return await _shopDal.GetAsync(x => x.Email == email&&x.Password==password);
         }
 
         public async Task AddShop(Shop shop)

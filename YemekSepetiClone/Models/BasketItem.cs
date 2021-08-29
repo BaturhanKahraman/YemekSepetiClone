@@ -6,9 +6,10 @@ namespace YemekSepetiClone.Models
     {
         public int Id { get; set; }
         public int MealId { get; set; }
-        public Meal Meal { get; set; } 
+        public Meal Meal { get; set; }
         public int Quantity { get; set; }
         [Column(TypeName = "decimal(18,2)")]
         public decimal Price { get; set; }
+        
     }
 }

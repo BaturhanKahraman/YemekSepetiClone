@@ -42,7 +42,7 @@ namespace YemekSepetiClone.Business.Concrete
 
         public async Task Update(Category category)
         {
-            await _dal.Update(category);
+            await _dal.UpdateAsync(category);
         }
     }
 }

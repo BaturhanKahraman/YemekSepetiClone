@@ -1,9 +1,11 @@
-﻿using YemekSepetiClone.Models;
+﻿using System.Threading.Tasks;
+using YemekSepetiClone.Models;
+using YemekSepetiClone.Models.Dtos.Order;
 
 namespace YemekSepetiClone.Business.Abstract
 {
     public interface IOrderService
     {
-        void Add(Order order);
+        Task Add(OrderDto orderdto);
     }
 }

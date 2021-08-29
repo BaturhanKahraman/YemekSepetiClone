@@ -29,7 +29,7 @@ namespace YemekSepetiClone.Business.Concrete
 
         public async Task Update(Meal meal)
         {
-            await _dal.Update(meal);
+            await _dal.UpdateAsync(meal);
         }
 
         public async Task<IList<Meal>> GetList()
@@ -37,14 +37,14 @@ namespace YemekSepetiClone.Business.Concrete
             return await _dal.GetList();
         }
 
-        public async Task<Meal> GetById(int id)
+        public async Task<Meal> GetByIdAsync(int id)
         {
-            return await _dal.Get(x => x.Id == id);
+            return await _dal.GetAsync(x => x.Id == id);
         }
 
         public async Task Delete(Meal meal)
         {
-            await _dal.Delete(meal);
+            await _dal.DeleteAsync(meal);
         }
 
         public async Task<List<Meal>> GetMealsByShopId(int id)
