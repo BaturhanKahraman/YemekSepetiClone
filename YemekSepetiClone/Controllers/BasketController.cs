@@ -32,6 +32,12 @@ namespace YemekSepetiClone.Controllers
             await _basketService.RemoveOrDecreaseBasketItem(dto);
             return Ok();
         }
-        
+        [HttpGet]
+        public async Task<IActionResult> GetBasket(int customerId)
+        {
+            var basket = await _basketService.GetBasketByCustomerId(customerId);
+            return Ok(basket);
+        }
+
     }
 }

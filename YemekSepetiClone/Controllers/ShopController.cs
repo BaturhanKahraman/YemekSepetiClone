@@ -22,7 +22,7 @@ namespace YemekSepetiClone.Controllers
         [HttpGet]
         public async Task<IActionResult> GetDetail(int id)
         {
-            return Ok( await _shopService.GetShopById(id));
+            return Ok( await _shopService.GetShopDetailById(id));
         }
         [HttpGet]
         public async Task<IActionResult> GetShopList()

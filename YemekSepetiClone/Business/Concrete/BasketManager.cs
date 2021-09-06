@@ -11,31 +11,38 @@ namespace YemekSepetiClone.Business.Concrete
     {
         private readonly IBasketDal _dal;
         private readonly IBasketItemService _basketItemService;
-        public BasketManager(IBasketDal dal, IBasketItemService basketItemService)
+        private readonly IMealService _mealService;
+        public BasketManager(IBasketDal dal, IBasketItemService basketItemService, IMealService mealService)
         {
             _dal = dal;
             _basketItemService = basketItemService;
+            _mealService = mealService;
         }
 
         public async Task AddItem(BasketItemAddDto addDto)
         {
             var basket = await _dal.GetBasketWithBasketItemsAsync(x => x.CustomerId == addDto.CustomerId);
+            Meal meal = await _mealService.GetByIdAsync(addDto.MealId);
+            if(basket == null)
+            {
+                return;
+            }
             if (basket.BasketItems.Any(x => x.MealId == addDto.MealId))
             {
                 basket.BasketItems.FirstOrDefault(x => x.MealId == addDto.MealId).Quantity+=addDto.Quantity;
-                await _dal.UpdateAsync(basket);
             }
             else
             {
                 var basketItemToAdd = new BasketItem()
                 {
                     MealId = addDto.MealId,
-                    Price = addDto.Price,
                     Quantity = 1,
                 };
+                basketItemToAdd.Price = meal.Price;
                 basket.BasketItems.Add(basketItemToAdd);
-                await _dal.UpdateAsync(basket);
             }
+
+            await _dal.UpdateAsync(basket);
         }
 
         public async Task RemoveOrDecreaseBasketItem(BasketItemDecreaseDto dto)
@@ -44,7 +51,6 @@ namespace YemekSepetiClone.Business.Concrete
             if (basket != null)
             {
                 var removedItem = basket.BasketItems.FirstOrDefault(x => x.MealId == dto.MealId);
-                removedItem.Quantity--;
                 await _basketItemService.UpdateAsync(removedItem);
                 if (removedItem.Quantity == 0)
                 {
@@ -56,6 +62,12 @@ namespace YemekSepetiClone.Business.Concrete
         public async Task Add(Basket basket)
         {
             await _dal.Add(basket);
+        }
+
+        public async Task<Basket> GetBasketByCustomerId(int id)
+        {
+            var basket =await _dal.GetBasketWithBasketItemsAsync(x => x.CustomerId == id);
+            return basket;
         }
     }
 }

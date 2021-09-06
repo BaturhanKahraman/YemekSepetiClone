@@ -6,10 +6,10 @@ namespace YemekSepetiClone.Models.Dtos.Basket
 {
     public class BasketItemAddDto
     {
+        [Required(ErrorMessage = "Kullanıcı id'si (customerId) gereklidir.")]
         public int CustomerId { get; set; }
-        public int Quantity { get; set; }
-        [Column(TypeName = "decimal(18,2)")]
-        public decimal Price { get; set; }
+        public int Quantity { get; set; } = 1;
+        [Required(ErrorMessage = "MealId gereklidir.")]
         public int MealId { get; set; }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
+using YemekSepetiClone.Models.Dtos.Shop;
 using YemekSepetiClone.Models.User;
 
 namespace YemekSepetiClone.Business.Abstract
@@ -12,5 +13,6 @@ namespace YemekSepetiClone.Business.Abstract
 
         Task AddShop(Shop shop);
         Task<IList<Shop>> GetList();
+        Task<ShopDetailDto> GetShopDetailById(int id);
     }
 }

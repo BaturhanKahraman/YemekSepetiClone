@@ -9,5 +9,7 @@ namespace YemekSepetiClone.Business.Abstract
         Task AddItem(BasketItemAddDto addDto);
         Task RemoveOrDecreaseBasketItem(BasketItemDecreaseDto dto);
         Task Add(Basket basket);
+        Task<Basket> GetBasketByCustomerId(int id);
+
     }
 }

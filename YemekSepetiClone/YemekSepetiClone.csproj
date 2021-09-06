@@ -20,8 +20,8 @@
 
   <ItemGroup>
     <Folder Include="Business\Utility\Validation\" />
-    <Folder Include="Migrations\" />
     <Folder Include="Models\Dtos\Category\" />
+    <Folder Include="Models\Dtos\Shop\" />
     <Folder Include="wwwroot\Images\" />
   </ItemGroup>
 

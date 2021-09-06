@@ -42,6 +42,7 @@ namespace YemekSepetiClone
                 c.SwaggerDoc("v1",new OpenApiInfo { Title = "My API V1",Version = "v1" });
             });
             services.AddDbContext<YemekSepetiContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+            
             //services.AddDbContextFactory<YemekSepetiContext>(
             //options =>
             //   options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));

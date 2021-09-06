@@ -2,6 +2,7 @@
 using System.Threading.Tasks;
 using YemekSepetiClone.Business.Abstract;
 using YemekSepetiClone.DataAccess.Abstract.Interfaces;
+using YemekSepetiClone.Models.Dtos.Shop;
 using YemekSepetiClone.Models.User;
 
 namespace YemekSepetiClone.Business.Concrete
@@ -20,6 +21,10 @@ namespace YemekSepetiClone.Business.Concrete
             return await _shopDal.GetAsync(x => x.Id == id);
         }
 
+        public async Task<ShopDetailDto> GetShopDetailById(int id)
+        {
+            return await _shopDal.GetDetailById(x => x.Id == id);
+        }
         public async Task<Shop> GetShopByEmailPassword(string email, string password)
         {
             return await _shopDal.GetAsync(x => x.Email == email&&x.Password==password);

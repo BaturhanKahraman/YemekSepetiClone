@@ -29,7 +29,6 @@ namespace YemekSepetiClone.Business.Concrete
                 Basket = new Basket()
                 {
                     BasketItems = orderdto.BasketItems,
-                    TotalPrice = orderdto.TotalPrice,
                     CustomerId = orderdto.UserId
                 }
             };
