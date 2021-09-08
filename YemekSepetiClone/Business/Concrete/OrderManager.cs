@@ -5,7 +5,6 @@ using YemekSepetiClone.Business.Abstract;
 using YemekSepetiClone.DataAccess.Abstract.Interfaces;
 using YemekSepetiClone.Models;
 using YemekSepetiClone.Models.Dtos.Order;
-using YemekSepetiClone.Models.Enums;
 
 namespace YemekSepetiClone.Business.Concrete
 {
@@ -20,17 +19,24 @@ namespace YemekSepetiClone.Business.Concrete
 
         public async Task Add(OrderDto orderdto)
         {
+
+            var orderDetails = new List<OrderDetail>();
+            orderdto.BasketItems.ForEach(x =>
+            {
+                orderDetails.Add(new OrderDetail()
+                {
+                    ItemId = x.MealId,
+                    ItemPrice = x.Price,
+                    Quantity = x.Quantity
+                });
+            });
             Order order = new()
             {
                 DeliveryMethod = orderdto.DeliveryMethod,
                 Address = orderdto.Address,
                 Note = orderdto.Note,
                 OrderedAt = DateTime.Now,
-                Basket = new Basket()
-                {
-                    BasketItems = orderdto.BasketItems,
-                    CustomerId = orderdto.UserId
-                }
+                OrderDetails = orderDetails
             };
             await _dal.Add(order);
         }

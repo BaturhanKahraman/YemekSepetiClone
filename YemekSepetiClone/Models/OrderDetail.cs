@@ -12,6 +12,8 @@ namespace YemekSepetiClone.Models
         public string ItemName { get; set; }
         [Column(TypeName = "decimal(18,2)")]
         public decimal ItemPrice { get; set; }
+
+        public int Quantity { get; set; }
         
     }
 }

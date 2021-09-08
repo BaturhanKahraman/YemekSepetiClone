@@ -20,7 +20,17 @@ namespace YemekSepetiClone.DataAccess.Concrete.EntityFrameworkCore
 
         public async Task<Basket> GetBasketWithBasketItemsAsync(Expression<Func<Basket,bool>> filter)
         {
-            return await _context.Baskets.Include(x => x.BasketItems).FirstOrDefaultAsync(filter);
+            return await _context
+                .Baskets
+                .Include(x => x.BasketItems)
+                .Select(x=> new Basket()
+                {
+                    BasketItems = x.BasketItems.Select(y =>new BasketItem()
+                    {
+                        Quantity = y.Quantity,Price = y.Price,MealId = y.MealId
+                    }).ToList(),CustomerId = x.CustomerId,Id = x.Id
+                })
+                .FirstOrDefaultAsync(filter);
         }
     }
 }

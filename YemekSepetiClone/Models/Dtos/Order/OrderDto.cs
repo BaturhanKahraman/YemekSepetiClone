@@ -9,7 +9,7 @@ namespace YemekSepetiClone.Models.Dtos.Order
     public class OrderDto
     {
         public int UserId { get; set; }
-
+        public int BasketId { get; set; }
         public List<BasketItem> BasketItems { get; set; }
 
         public decimal TotalPrice { get; set; }
